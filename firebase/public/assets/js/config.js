@@ -27,3 +27,5 @@ var LIST_REAL_CATEGORY = []
 var FIRESTORE          = null
 var CURRENT_CATEGORY   = 'All'
 var USER_EMAIL         = 'Cargando..'
+var ACTION_ACTUALIZAT  = false
+var ACTUALIZACION_BASE = false // por ahora no se usa

@@ -15,11 +15,13 @@ document.getElementById('saveNewRecordData').addEventListener('click', () => {
         password: modalPassword.value.trim().substring(0, 22),
         comment: modalTextarea.value.trim().substring(0, 111)
     }).then(() => {
-        console.log("Objeto guardado en Firestore con éxito")
+        ACTION_ACTUALIZAT   = true
         modalEmail.value    = ''
         modalPassword.value = ''
         modalTextarea.value = ''
+        GetAllUserData(firebase, miSUser)
         alert('¡Saved!')
+
     }).catch((error) => {
         console.error("Error al guardar objeto en Firestore:", error)
         alert('Error '+error)
@@ -36,13 +38,13 @@ document.getElementById('saveNewCategoryData').addEventListener('click', () => {
         category: modalCategory.value.trim().substring(0, 22)
     }).then(() => {
         modalCategory.value = ''
+        GetAllUserData(firebase, miSUser)
         alert('¡Saved!')
     }).catch((error) => {
         console.error("Error al guardar objeto en Firestore:", error)
     })
     
 })
-
 
 function getCurrentDate() {
     let now = new Date();
@@ -56,3 +58,30 @@ function functionCurrentCategory(x){
     CURRENT_CATEGORY = x
     pushCategoryToPage()
 }
+
+/* delete password line in table */
+function actionFromThis(idLinea, action){
+    if(action == 'change'){
+        
+    }
+    
+    if(action == 'delete'){
+        let isPosibleDelete = confirm('¿Delete this line?')
+        if(isPosibleDelete){
+            let db = firebase.firestore();
+            let docRef = db.collection('users').doc(miSUser.uid).collection('password').doc(idLinea)
+                docRef.delete().then(() => {
+                    GetAllUserData(firebase, miSUser)
+                }).catch((error) => {
+                    console.error("Error removing document: ", error);
+                })
+        }
+    }
+}
+
+document.getElementById('linkLogout').addEventListener('click', () => {
+    localStorage.setItem('uid', null)
+    localStorage.setItem('email', '')
+    localStorage.setItem('password', '')
+    location.href = '/'
+})

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +9,7 @@
     <link href="/assets/img/favicon.png" rel="icon">
     <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -86,6 +83,9 @@
                     <i class="bi bi-journal-text"></i><span>New Record</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#" id="linkLogout"><i class="bi bi-file-earmark"></i><span>Logout</span></a>
+            </li>
         </ul>
     </aside>
 
@@ -95,7 +95,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body"><br>
-                            <h1><span class="badge bg-primary">¡Hello!</span> To create a new category click "New Category" <br> To save a new password "New Record"</h1>
+                            <h1><span class="badge bg-primary">¡Hello!</span> <br><br> Create a new category click "New Category" <br><br> To save a new password "New Record"</h1>
                         </div>
                     </div>
                 </div>
@@ -109,6 +109,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Category</li>
                     <li class="breadcrumb-item" id="setCurrentCategory"></li>
+                    <li class="breadcrumb-item" id="counterLines"></li>
                 </ol>
             </nav>
         </div>
@@ -119,7 +120,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Datatable</h5>
                             <p>Is an open source project. The source code can be found on the <a href="https://github.com/SuzdalenkoAlexey/password-manager-22" target="_blank">Git Hub</a></p>
-                            <table class="table datatable"><thead><tr><th>Date</th><th>Category</th><th>Email</th><th>Password</th><th>Comment</th></tr></thead>
+                            <table class="table datatable"><thead><tr><th>Date</th><th>Category</th><th>Email</th><th>Password</th><th>Comment</th><th>Action</th></tr></thead>
                             <tbody id="table_content_password"></tbody>
                             </table>
                         </div>
@@ -194,6 +195,7 @@
 
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/functionsmain.js"></script>
     <script src="/assets/js/dashboard_header.js"></script>
     <script src="/assets/js/functionality.js"></script>
     <script src="/assets/js/savenewrecord.js"></script>

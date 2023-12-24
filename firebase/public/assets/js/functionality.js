@@ -1,6 +1,8 @@
-async function GetAllUserData(_firebase, _user){
+function GetAllUserData(_firebase, _user){
     FIRESTORE          = firebase.firestore()
     LIST_REAL_CATEGORY = ['Default']
+    LIST_CATEGORY      = []
+    LIST_PASSWORD      = []
     getCategories(FIRESTORE)
     getPasswords(FIRESTORE)  
 }

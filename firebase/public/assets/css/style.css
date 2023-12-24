@@ -1234,3 +1234,11 @@ h6 {
 #helloMessagesSection, #pageTitleContent, #tableSectionContent {
   display: none;
 }
+
+.actionsIcons{
+  color: #c8c8c8;
+}
+
+.actionsIcons:hover{
+  color: #2c384e; cursor: pointer;
+}

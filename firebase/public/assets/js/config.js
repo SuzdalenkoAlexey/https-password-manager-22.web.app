@@ -1,4 +1,4 @@
-const firebaseConfig = {
+const firebaseConfig = { 
     apiKey: "AIzaSyA0vros7UR7JvBOalLEEyCr9aTnUVogm8w",
     authDomain: "password-manager-22.firebaseapp.com",
     databaseURL: "https://password-manager-22-default-rtdb.firebaseio.com",
@@ -9,7 +9,6 @@ const firebaseConfig = {
     measurementId: "G-3TH444YE6M"
 }
   
-
 class SUser {
     constructor(uid, email, password){
         this.uid = uid
@@ -21,4 +20,10 @@ class SUser {
     }
 }
 
-var miSUser = new SUser(localStorage.getItem('uid'), localStorage.getItem('email'), localStorage.getItem('password'))
+var miSUser            = new SUser(localStorage.getItem('uid'), localStorage.getItem('email'), localStorage.getItem('password'))
+var LIST_CATEGORY      = []
+var LIST_PASSWORD      = []
+var LIST_REAL_CATEGORY = []
+var FIRESTORE          = null
+var CURRENT_CATEGORY   = 'All'
+var USER_EMAIL         = 'Cargando..'

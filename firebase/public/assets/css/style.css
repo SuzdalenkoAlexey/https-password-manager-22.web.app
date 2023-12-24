@@ -1230,3 +1230,7 @@ h6 {
 #footer{
   display: none;
 }
+
+#helloMessagesSection, #pageTitleContent, #tableSectionContent {
+  display: none;
+}

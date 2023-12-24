@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- alexey.saron@gmail.com firebase -->
+  <!-- alexey.saron@gmail.com firebase http://192.168.42.139:5500/ -->
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Password Manager</title>
@@ -71,7 +71,7 @@
                 </div>
               </div>
               <div class="credits">
-                Designed by <a target="_blank" href="https://www.linkedin.com/in/alexeysuzdalenko">Alexey Suzdalenko</a>
+                Designed by <a target="_blank" href="https://www.linkedin.com/in/alexeysuzdalenko">S. A.</a>
               </div>
             </div>
           </div>
@@ -142,6 +142,7 @@
               InputEmailEl.value    = userEmail
               InputPasswordEL.value = userPass
               this.TryToLogin(userEmail, userPass)
+              ALogin.innerHTML = "Logging on.."
           }
         }
     }
@@ -153,8 +154,6 @@
         loginRutas = new LoginRutas(firebase)
         loginRutas.SetDefaultEmailPassword()
     })
-
-    console.log(localStorage)
 </script>
 
 <!--

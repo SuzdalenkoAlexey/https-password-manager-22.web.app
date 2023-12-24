@@ -37,10 +37,10 @@ function pushCategoryToPage(){
     htmlContentCat = ''
     LIST_PASSWORD.forEach(x =>  {
         if(CURRENT_CATEGORY == 'All'){
-            htmlContentCat += `<tr><td>`+x.date+`</td><td>`+x.category+`</td><td>`+x.email+`</td><td>`+x.pass+`</td><td>X</td></tr>`
+            htmlContentCat += `<tr><td>`+x.date+`</td><td>`+x.category+`</td><td>`+x.email+`</td><td>`+x.pass+`</td><td>`+x.comment+`</td></tr>`
         } else {
             if(CURRENT_CATEGORY == x.category){
-                htmlContentCat += `<tr><td>`+x.date+`</td><td>`+x.category+`</td><td>`+x.email+`</td><td>`+x.pass+`</td><td>X</td></tr>`
+                htmlContentCat += `<tr><td>`+x.date+`</td><td>`+x.category+`</td><td>`+x.email+`</td><td>`+x.pass+`</td><td>`+x.comment+`</td></tr>`
             }
         }
     })

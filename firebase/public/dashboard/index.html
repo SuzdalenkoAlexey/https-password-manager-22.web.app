@@ -30,7 +30,7 @@
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="/" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center" id="aMainHref">
                 <img src="/assets/img/logo.png" alt="Password Manager">
                 <span class="d-none d-lg-block">PassManager</span>
             </a>
@@ -63,13 +63,12 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span >List Categories</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-menu-button-wide"></i><span >List Categories</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
             </li>
             <li class="nav-item"  onclick="functionCurrentCategory('All')">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" id="allRecordsA">
                     <i class="bi bi-layout-text-window-reverse"></i><span>All Records</span>
                 </a>
             </li>
@@ -204,15 +203,39 @@
     <script src="/assets/js/dashboard_header.js"></script>
     <script src="/assets/js/functionality.js"></script>
     <script src="/assets/js/savenewrecord.js"></script>
+    <script src="/assets/js/delete_category.js"></script>
     <script>
+        if(!miSUser.uid) { location.href = '/'; }
         firebase.initializeApp(firebaseConfig)
-         
-        firebase.auth().signInWithEmailAndPassword(miSUser.email, miSUser.password).then((userCredential) => {
-            SetUserNameHeader(firebase, miSUser)
-            GetAllUserData(firebase, miSUser)
-        }).catch((error) => {
-            document.getElementById('spanUserEmail').innerHTML = '..'
-        })
+        FIRESTORE = firebase.firestore()
+        
+        let userAlreadyLoggedIn = localStorage.getItem('userAlreadyLoggedIn') || false
+        let savedPasswordLines = JSON.parse(localStorage.getItem('savedPasswordLines')) || []
+        if(userAlreadyLoggedIn && savedPasswordLines && savedPasswordLines.length > 0){                             
+            LIST_PASSWORD      = savedPasswordLines
+            LIST_REAL_CATEGORY = JSON.parse(localStorage.getItem('savedCategoryLines')) 
+            pushCategoryToPage()
+            console.log('TOP')
+        } else {
+            firebase.auth().signInWithEmailAndPassword(miSUser.email, miSUser.password).then((userCredential) => {
+                localStorage.setItem('userAlreadyLoggedIn', true)
+                GetAllUserData(firebase, miSUser)      // this function update localstorage passwords and categories
+            }).catch((error) => {
+                document.getElementById('spanUserEmail').innerHTML = '..'
+            })
+            console.log('BOTTOM')
+        }
+
+        /* default login */
+        setTimeout(() => { 
+            firebase.auth().signInWithEmailAndPassword(miSUser.email, miSUser.password).then((userCredential) => {
+            }).catch((error) => {
+                alert('You are not logged in')
+                localStorage.href = '/'
+            })
+        }, 3000)
+        SetUserNameHeader(firebase, miSUser) 
+    
     </script>
 </body>
 </html>

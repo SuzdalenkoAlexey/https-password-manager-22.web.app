@@ -1242,3 +1242,7 @@ h6 {
 .actionsIcons:hover{
   color: #2c384e; cursor: pointer;
 }
+
+#setCurrentCategory:hover{
+  cursor: pointer;
+}

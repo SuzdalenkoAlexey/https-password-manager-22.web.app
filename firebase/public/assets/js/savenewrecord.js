@@ -1,4 +1,5 @@
 document.getElementById('saveNewRecordData').addEventListener('click', () => {
+
     let currentTime    = 'x'+ new Date().valueOf()
     let modalEmail     = document.getElementById('modalEmail')
     let modalPassword  = document.getElementById('modalPassword')
@@ -15,13 +16,13 @@ document.getElementById('saveNewRecordData').addEventListener('click', () => {
         password: modalPassword.value.trim().substring(0, 22),
         comment: modalTextarea.value.trim().substring(0, 111)
     }).then(() => {
+        CURRENT_CATEGORY    = floatingSelect.value.trim().substring(0, 22)
         ACTION_ACTUALIZAT   = true
         modalEmail.value    = ''
         modalPassword.value = ''
         modalTextarea.value = ''
         GetAllUserData(firebase, miSUser)
         alert('¡Saved!')
-
     }).catch((error) => {
         console.error("Error al guardar objeto en Firestore:", error)
         alert('Error '+error)
@@ -37,13 +38,13 @@ document.getElementById('saveNewCategoryData').addEventListener('click', () => {
         id: currentTime,
         category: modalCategory.value.trim().substring(0, 22)
     }).then(() => {
+        CURRENT_CATEGORY    = modalCategory.value.trim().substring(0, 22)
         modalCategory.value = ''
         GetAllUserData(firebase, miSUser)
         alert('¡Saved!')
     }).catch((error) => {
         console.error("Error al guardar objeto en Firestore:", error)
     })
-    
 })
 
 function getCurrentDate() {
@@ -68,7 +69,7 @@ function actionFromThis(idLinea, action){
     if(action == 'delete'){
         let isPosibleDelete = confirm('¿Delete this line?')
         if(isPosibleDelete){
-            let db = firebase.firestore();
+            let db = firebase.firestore()
             let docRef = db.collection('users').doc(miSUser.uid).collection('password').doc(idLinea)
                 docRef.delete().then(() => {
                     GetAllUserData(firebase, miSUser)

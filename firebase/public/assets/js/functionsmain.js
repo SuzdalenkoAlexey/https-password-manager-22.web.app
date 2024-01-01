@@ -68,8 +68,8 @@ function pushCategoryToPage(){
 }
 
 
-function pushEmailSimbolTuSimbol(x){
-    let userEmailSplited = USER_EMAIL.split('')
+function pushEmailSimbolTuSimbol(x){                                    
+    let userEmailSplited = localStorage.getItem('email') || ''
     let indeX = 0
     let res     = ''
     let stopInterval = setInterval(() => {

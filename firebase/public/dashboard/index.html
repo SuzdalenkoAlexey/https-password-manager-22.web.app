@@ -38,7 +38,7 @@
         </div>
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword" id="searchPasswordInput">
                 <button type="button" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div>
@@ -204,6 +204,7 @@
     <script src="/assets/js/functionality.js"></script>
     <script src="/assets/js/savenewrecord.js"></script>
     <script src="/assets/js/delete_category.js"></script>
+    <script src="/assets/js/search_input.js"></script>
     <script>
         if(!miSUser.uid) { location.href = '/'; }
         firebase.initializeApp(firebaseConfig)
